@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from core.logger import logger
+from core.extension_loader import load_extensions
 
 class FreshLineBot(commands.Bot):
     def __init__(self):
@@ -16,8 +17,7 @@ class FreshLineBot(commands.Bot):
         logger.info("FreshLine bot initialized")
 
     async def setup_hook(self):
-        await self.load_extension("cogs.ping") # Load the ping cog
-        logger.info("Loaded extension: cogs.ping") # Inform the user
+        await load_extensions(self) # Load the cogs automatically
         synced = await self.tree.sync() # Synchronize
         logger.info(f"Synchronized {len(synced)} application command(s).") # Inform the user
 
