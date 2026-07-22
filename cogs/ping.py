@@ -32,7 +32,7 @@ class Ping(commands.Cog):
         )
         embed.add_field(
             name = "Gateway Latency",
-            value = f"`{latency} ms`",
+            value = f"`{gateway_latency} ms`",
             inline = False
         )
         embed.add_field(
@@ -41,3 +41,6 @@ class Ping(commands.Cog):
             inline = False
         )
         await interaction.response.send_message(embed=embed)
+
+async def setup(bot: commands.Bot):
+    await bot.add_cog(Ping(bot))

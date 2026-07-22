@@ -15,6 +15,13 @@ class FreshLineBot(commands.Bot):
 
         logger.info("FreshLine bot initialized")
 
+    async def setup_hook(self):
+        await self.load_extension("cogs.ping") # Load the ping cog
+        logger.info("Loaded extension: cogs.ping") # Inform the user
+        await self.tree.sync() # Synchronize
+        logger.info("Application commands synced successfully.") # Inform the user
+
+
     async def on_ready(self):
         assert self.user is not None
         logger.info("=" * 40)
