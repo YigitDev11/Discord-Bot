@@ -18,8 +18,8 @@ class FreshLineBot(commands.Bot):
     async def setup_hook(self):
         await self.load_extension("cogs.ping") # Load the ping cog
         logger.info("Loaded extension: cogs.ping") # Inform the user
-        await self.tree.sync() # Synchronize
-        logger.info("Application commands synced successfully.") # Inform the user
+        synced = await self.tree.sync() # Synchronize
+        logger.info(f"Synchronized {len(synced)} application command(s).") # Inform the user
 
 
     async def on_ready(self):
