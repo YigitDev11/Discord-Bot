@@ -1,19 +1,57 @@
 import logging
 from core.config import config
+from pathlib import Path
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+# Setting up the directory for FileHandler
+LOG_DIRECTORY = Path("logs")
+LOG_DIRECTORY.mkdir(exist_ok=True)
+#Create the DailyFileHandler class for special file logging seamlessly.
+class DailyFileHandler(logging.FileHandler):
+    def _today(self) -> str:
+        return datetime.now(ZoneInfo("Europe/Istanbul")).strftime("%Y-%m-%d")
+    def __init__(self, log_directory: Path):
+        self.log_directory = log_directory # Setting up the log directory
+        self.current_date = self._today() # Detecting today's date
+        log_file = self.log_directory / f"{self.current_date}.log" # Setting up the log file
+
+        super().__init__(
+            filename=log_file,
+            encoding="utf-8"
+        )
+    def _switch_log_file(self, new_date: str):
+        if self.stream:
+            self.stream.flush()
+            self.stream.close()
+        self.current_date = new_date
+        log_file = self.log_directory / f"{new_date}.log"
+        self.baseFilename = str(log_file)
+        self.stream = self._open()
+    def emit(self, record):
+        today = self._today()
+        if today != self.current_date:
+            self._switch_log_file(today)
+        super().emit(record)
+
 
 # Create Logger
-logger = logging.getLogger("FreshLine")
+logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG if config.DEBUG else logging.INFO)
-# Create Handler
-handler = logging.StreamHandler()
+logger.propagate = False # To prevent repeating logs
+# Create Handlers
+console_handler = logging.StreamHandler()
+file_handler = DailyFileHandler(LOG_DIRECTORY)
 # Create Formatter
 formatter = logging.Formatter(
     fmt="%(asctime)s -  %(filename)s | %(levelname)s |: %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S"
 )
-# Connect Formatter to Handler
-handler.setFormatter(formatter)
+# Connect Formatter to Handlers
+console_handler.setFormatter(formatter)
+file_handler.setFormatter(formatter)
 # Connect Handler to Logger
-logger.addHandler(handler)
-
+if not logger.handlers:
+    logger.addHandler(console_handler)
+    logger.addHandler(file_handler)
 logger.info("Logger initialized.")
