@@ -4,13 +4,14 @@ from pathlib import Path
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-# Setting up the directory for FileHandler
+# Defining static variables
 LOG_DIRECTORY = Path("logs")
-LOG_DIRECTORY.mkdir(exist_ok=True)
+LOG_DIRECTORY.mkdir(parents=True exist_ok=True)
+TIMEZONE = ZoneInfo("Europe/Istanbul")
 #Create the DailyFileHandler class for special file logging seamlessly.
 class DailyFileHandler(logging.FileHandler):
     def _today(self) -> str:
-        return datetime.now(ZoneInfo("Europe/Istanbul")).strftime("%Y-%m-%d")
+        return datetime.now(TIMEZONE).strftime("%Y-%m-%d")
     def __init__(self, log_directory: Path):
         self.log_directory = log_directory # Setting up the log directory
         self.current_date = self._today() # Detecting today's date
@@ -36,7 +37,7 @@ class DailyFileHandler(logging.FileHandler):
 
 
 # Create Logger
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("FreshLine.Core")
 logger.setLevel(logging.DEBUG if config.DEBUG else logging.INFO)
 logger.propagate = False # To prevent repeating logs
 # Create Handlers
@@ -54,4 +55,4 @@ file_handler.setFormatter(formatter)
 if not logger.handlers:
     logger.addHandler(console_handler)
     logger.addHandler(file_handler)
-logger.info("Logger initialized.")
+logger.info("{logger.name} initialized.")
