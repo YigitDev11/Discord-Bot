@@ -1,12 +1,13 @@
 import logging
-from core.config import config
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
 from zoneinfo import ZoneInfo
+
+from core.config import config
 
 # Defining static variables
 LOG_DIRECTORY = Path("logs")
-LOG_DIRECTORY.mkdir(parents=True exist_ok=True)
+LOG_DIRECTORY.mkdir(parents=True, exist_ok=True)
 TIMEZONE = ZoneInfo("Europe/Istanbul")
 #Create the DailyFileHandler class for special file logging seamlessly.
 class DailyFileHandler(logging.FileHandler):
@@ -55,4 +56,4 @@ file_handler.setFormatter(formatter)
 if not logger.handlers:
     logger.addHandler(console_handler)
     logger.addHandler(file_handler)
-logger.info("{logger.name} initialized.")
+logger.info(f"{logger.name} initialized.")
