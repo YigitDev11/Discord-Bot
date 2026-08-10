@@ -13,8 +13,8 @@ class GlobalErrorHandler:
         original_error = self._unwrap_error(error)
         if isinstance(original_error, PermissionDenied):
             logger.warning(f"Permission denied for user {interaction.user.id}")
-            await interaction.response.send_message("❌ You don't have permission to use this command.")
-            ephemeral=True
+            await interaction.response.send_message("❌ You don't have permission to use this command.", ephemeral=True)
+            return
     def _unwrap_error(self, error: Exception) -> Exception:
         if isinstance(error, app_commands.CommandInvokeError):
             return error.original
