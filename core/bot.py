@@ -1,7 +1,8 @@
 import discord
 from discord.ext import commands
-from core.logger import logger
+
 from core.extension_loader import load_extensions
+from core.logger import logger
 
 class FreshLineBot(commands.Bot):
     def __init__(self):
