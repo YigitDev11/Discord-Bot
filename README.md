@@ -73,8 +73,8 @@ This provides a consistent foundation for handling failures as the platform grow
 
 ## Project Structure
 
-```text
-fresh-line/
+```
+Discord-Bot/
 ├── cogs/
 │   └── ping.py
 ├── core/
@@ -104,8 +104,8 @@ fresh-line/
 Clone the repository:
 
 ```bash
-git clone <repository-url>
-cd fresh-line
+git clone https://github.com/YigitDev11/Discord-Bot
+cd Discord-Bot
 ```
 
 Create a virtual environment:
