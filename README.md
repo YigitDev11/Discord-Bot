@@ -1,6 +1,6 @@
-# NOVUM — Fresh-line
+# NOVUM — Fresh-Line
 
-**Fresh-line** is the first generation of NOVUM's modular Discord software platform, built with Python and `discord.py`.
+**Fresh-Line** is the first generation of NOVUM's modular Discord software platform, built with Python and `discord.py`.
 
 It provides a clean, extensible foundation for building Discord bots without coupling the entire application to a single monolithic implementation.
 
@@ -8,7 +8,7 @@ It provides a clean, extensible foundation for building Discord bots without cou
 
 ## Overview
 
-NOVUM Fresh-line is currently focused on the developer-facing foundation of the platform.
+NOVUM Fresh-Line is currently focused on the developer-facing foundation of the platform.
 
 The current release provides the core infrastructure required to develop and extend a Discord bot:
 
@@ -21,11 +21,11 @@ The current release provides the core infrastructure required to develop and ext
 * Centralized event handling
 * Custom exception hierarchy
 
-Fresh-line is **not yet a finished end-user Discord bot**. The current release is intended primarily as a development foundation for the NOVUM platform.
+Fresh-Line is **not yet a finished end-user Discord bot**. The current release is intended primarily as a development foundation for the NOVUM platform.
 
 ## Architecture
 
-Fresh-line follows a modular architecture built around `discord.py`.
+Fresh-Line follows a modular architecture built around `discord.py`.
 
 Core responsibilities are separated into dedicated components for configuration, bot initialization, event handling, extension loading, logging, and exception management.
 
@@ -35,7 +35,7 @@ This structure is designed to keep individual features isolated and make the pla
 
 ### Slash Commands
 
-Fresh-line supports Discord application commands through `discord.py`.
+Fresh-Line supports Discord application commands through `discord.py`.
 
 Commands can be implemented independently inside Cogs while the core bot remains responsible for initialization and application-level infrastructure.
 
@@ -53,7 +53,7 @@ Sensitive values such as the Discord bot token are loaded through environment va
 
 ### Logging
 
-Fresh-line includes a centralized logging system designed for development and debugging.
+Fresh-Line includes a centralized logging system designed for development and debugging.
 
 Current logging capabilities include:
 
@@ -131,7 +131,7 @@ Configure the required values in `.env` before starting the bot.
 
 ## Configuration
 
-Fresh-line uses environment variables for runtime configuration.
+Fresh-Line uses environment variables for runtime configuration.
 
 An example configuration is provided in:
 
@@ -145,7 +145,7 @@ Create a local `.env` file from this template and provide the required values.
 
 ## Running
 
-After configuring the environment, start Fresh-line with:
+After configuring the environment, start Fresh-Line with:
 
 ```bash
 python main.py
@@ -155,7 +155,7 @@ The application will initialize the bot, configure its core services, load the c
 
 ## Development
 
-Fresh-line is currently developed as a foundation for the NOVUM platform.
+Fresh-Line is currently developed as a foundation for the NOVUM platform.
 
 The current development priorities are:
 
@@ -168,7 +168,7 @@ The current development priorities are:
 
 ## Roadmap
 
-The roadmap will evolve throughout the Fresh-line development cycle.
+The roadmap will evolve throughout the Fresh-Line development cycle.
 
 Planned areas include:
 
@@ -182,7 +182,7 @@ Planned areas include:
 
 ## Contributing
 
-Fresh-line is currently in an early beta stage.
+Fresh-Line is currently in an early beta stage.
 
 Technical feedback, issues, and contributions are welcome.
 
@@ -196,4 +196,4 @@ License information will be added in a future release.
 
 **NOVUM**
 
-*Fresh-line — the first generation.*
+*Fresh-Line — the first generation.*

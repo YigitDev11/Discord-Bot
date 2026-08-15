@@ -6,10 +6,12 @@ from discord import app_commands
 class Ping(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
+
     @app_commands.command(
         name = "ping",
         description = "Monitors the delay of the bot."
     )
+
     async def ping(self, interaction: discord.Interaction):
         gateway_latency = round(self.bot.latency * 1000)
 

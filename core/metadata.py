@@ -1,0 +1,6 @@
+NAME = "NOVUM"
+GENERATION = "First-Line"
+VERSION = "v0.1.0-beta"
+MAIN_DESCRIPTION = "NOVUM is a next-generation modular Discord bot framework."
+GEN_DESCRIPTION = "Fresh-Line is the first generation of NOVUM."
+VER_DESCRIPTION = "The bot is in very early stages of development."
